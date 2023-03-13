@@ -128,7 +128,7 @@ FocusScope {
 
         readonly property int delegateHeight: vpx(33) * uiScale
         readonly property var fullHeight: delegateHeight * (root.items.count ?? root.items.length ?? 0)
-        readonly property var maxHeight: delegateHeight * 5
+        readonly property var maxHeight: delegateHeight * 19
 
         focus: root.focus && root.state == 'open'
         clip: true

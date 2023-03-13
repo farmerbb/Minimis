@@ -271,7 +271,7 @@ Item {
 
             enabled: !!enabledItems[index]
 
-            opacity: enabled ? (selected && !root.activeFocus ? 0.8 : 1) : 0.33
+            opacity: enabled && selected ? 1 : 0.33
 
             width: parent ? parent.width : height
             height: vpx(32) * uiScale
@@ -282,8 +282,6 @@ Item {
                 anchors.fill: parent
 
                 color: (selected && root.activeFocus) ? api.memory.get('settings.general.accentColor') : 'transparent'
-                border.width: (selected && !root.activeFocus) ? vpx(2) : 0
-                border.color: api.memory.get('settings.general.accentColor')
                 radius: vpx(5)
 
                 layer.enabled: selected
@@ -305,8 +303,7 @@ Item {
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                
-                opacity: selected ? 1 : 0.5
+
                 color: (selected && root.activeFocus) ? api.memory.get('settings.general.backgroundColor') : api.memory.get('settings.general.textColor')
 
                 layer.enabled: !selected

@@ -14,7 +14,7 @@ Column {
     readonly property bool borderEnabled: api.memory.get('settings.cardTheme.borderEnabled')
     readonly property real borderWidth: api.memory.get('settings.cardTheme.borderWidth')
 
-    opacity: selected ? 1 : 0.2
+    opacity: selected ? 1 : 0.5
     visible: titleEnabled && (titleAlwaysVisible || selected)
 
     topPadding: gameDelegateTitlePadding + (borderEnabled ? borderWidth : 0)
@@ -115,7 +115,9 @@ Column {
                 const value = game[parent.orderByField];
                 switch (parent.orderByField) {
                     case 'title':
-                        return game.releaseYear;
+                        return '';
+                    case 'releaseYear':
+                        return `${game.releaseYear != 0 ? game.releaseYear : 'N/A'}`;
                     case 'players':
                         return `${value > 1 ? '1 - ' : ' '}${value}`;
                     case 'lastPlayed':

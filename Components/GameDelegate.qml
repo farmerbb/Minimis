@@ -55,7 +55,10 @@ Item {
 
     readonly property real cardRadius: vpx(api.memory.get('settings.cardTheme.cornerRadius'));
 
-    width: aspectRatioNative && !isLoading && screenshot.hasError ? screenshot.height : screenshot.width
+    readonly property int numberOfColumns: Math.max(api.memory.get('settings.library.columns'), 1)
+    readonly property int parentWidth: Math.min(parent.width, 3840)
+
+    width: aspectRatioNative && !isLoading && screenshot.hasError ? (parentWidth / numberOfColumns) : screenshot.width
     height: screenshot.height
 
     scale: scaleEnabled ? (selected ? scaleSelected : scaleUnselected) : settingsMetadata.cardTheme.scale.defaultValue
@@ -102,7 +105,7 @@ Item {
     Image {
         id: screenshot
 
-        readonly property string src: game && game.assets[assetKey] || ''
+        readonly property string src: game && game.assets[assetKey] || game.assets.boxFront || game.assets.poster || game.assets.logo || ''
         readonly property bool hasError: status === Image.Error || src == ''
 
         source: ''

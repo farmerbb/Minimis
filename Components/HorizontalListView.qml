@@ -35,7 +35,7 @@ FocusScope {
             font.pixelSize: vpx(18) * uiScale
 
             color: api.memory.get('settings.general.textColor')
-            opacity: root.focus ? 1 : 0.2
+            opacity: root.focus ? 1 : 0.6
 
             layer.enabled: true
             layer.effect: DropShadowLow { cached: true }

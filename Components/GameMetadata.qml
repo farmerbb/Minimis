@@ -8,7 +8,7 @@ ColumnLayout {
     id: root
     property var game
 
-    property bool showDetails: false
+    property bool showDetails: true
 
     property int bottomMargin: vpx(35) * uiScale
 
@@ -20,7 +20,7 @@ ColumnLayout {
 
     onGameChanged: {
         description.animate = false;
-        showDetails = false;
+        showDetails = true;
         description.animate = true;
     }
 
@@ -38,7 +38,7 @@ ColumnLayout {
             Image {
                 id: logo
 
-                source: root.game ? root.game.assets.logo || '' : ''
+                source: root.game ? root.game.assets.boxFront || root.game.assets.poster || root.game.assets.logo || '' : ''
                 sourceSize: Qt.size(width, height)
                 anchors.fill: parent
 
@@ -91,7 +91,7 @@ ColumnLayout {
                 Layout.alignment: Qt.AlignBottom | Qt.AlignLeft
 
                 scrollWaitDuration: 5000
-                pixelsPerSecond: 4
+                pixelsPerSecond: 40
 
                 Text {
                     anchors.left: parent.left; anchors.right: parent.right
@@ -122,12 +122,25 @@ ColumnLayout {
         id: metadata
 
         Layout.fillWidth: true
-        Layout.leftMargin: vpx(10) * uiScale
         Layout.bottomMargin: height * 0.5
 
         Layout.alignment: Qt.AlignBottom | Qt.AlignLeft
 
         spacing: vpx(20)
+
+        Text {
+            text: root.game.collections.get(0).name
+            anchors.verticalCenter: parent.verticalCenter
+
+            font.pixelSize: fontSize
+            font.family: subtitleFont.name
+            font.bold: true
+            color: api.memory.get('settings.general.textColor')
+
+            verticalAlignment: Text.AlignVCenter
+        }
+
+        Circle { radius: vpx(2); anchors.verticalCenter: parent.verticalCenter }
 
         Text {
             text: year
@@ -147,14 +160,8 @@ ColumnLayout {
             id: playersBackground
             anchors.verticalCenter: parent.verticalCenter
 
-            width: playersText.contentWidth + vpx(40) * uiScale
-            height: playersText.contentHeight + vpx(10) * uiScale
-
-            border.width: vpx(2)
-            border.color: api.memory.get('settings.general.accentColor')
-
-            radius: vpx(5)
-
+            width: playersText.contentWidth
+            height: playersText.contentHeight
             color: 'transparent'
 
             Text {

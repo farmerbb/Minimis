@@ -26,8 +26,24 @@ FocusScope {
 
         if (game) {
             game.assets.videoList.forEach(v => media.push(v));
+            game.assets.boxFrontList.forEach(v => media.push(v));
+            game.assets.boxBackList.forEach(v => media.push(v));
+            game.assets.boxSpineList.forEach(v => media.push(v));
+            game.assets.boxFullList.forEach(v => media.push(v));
+            game.assets.cartridgeList.forEach(v => media.push/(v));
+            game.assets.posterList.forEach(v => media.push(v));
+            game.assets.panelList.forEach(v => media.push(v));
+            game.assets.cabinetLeftList.forEach(v => media.push(v));
+            game.assets.cabinetRightList.forEach(v => media.push(v));
+            game.assets.titlescreenList.forEach(v => media.push(v));
             game.assets.screenshotList.forEach(v => media.push(v));
             game.assets.backgroundList.forEach(v => media.push(v));
+            game.assets.marqueeList.forEach(v => media.push(v));
+            game.assets.bezelList.forEach(v => media.push(v));
+            game.assets.logoList.forEach(v => media.push(v));
+            game.assets.tileList.forEach(v => media.push(v));
+            game.assets.bannerList.forEach(v => media.push(v));
+            game.assets.steamList.forEach(v => media.push(v));
         }
 
         gameMedia = media;
@@ -93,7 +109,7 @@ FocusScope {
                         id: gameMetadata
 
                         Layout.preferredWidth: root.width * 0.7
-                        Layout.preferredHeight: root.height * 0.5
+                        Layout.preferredHeight: root.height * 0.8
 
                         Layout.fillWidth: false
                         Layout.alignment: Qt.AlignBottom | Qt.AlignLeft

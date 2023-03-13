@@ -48,25 +48,6 @@ Item {
         color: 'black'
     }
 
-    Text {
-        id: icon
-        height: item.height * 0.25; width: height
-        anchors.centerIn: parent
-
-        text: isVideo ? '\uf04b' : '\uf03e'
-
-        font.family: fontawesome.name
-        font.pixelSize: height
-
-        color: api.memory.get('settings.general.textColor')
-
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-
-        layer.enabled: true
-        layer.effect: DropShadowLow { cached: true }
-    }
-
     Keys.onPressed: {
         if (api.keys.isAccept(event) && !event.isAutoRepeat) {
             event.accepted = true;

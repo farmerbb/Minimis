@@ -133,7 +133,7 @@ FocusScope {
     Background {
         anchors.fill: parent
 
-        source: contentLoader.game ? contentLoader.game.assets.screenshot || '' : ''
+        source: contentLoader.game ? contentLoader.game.assets.background || contentLoader.game.assets.titlescreen || contentLoader.game.assets.screenshot || '' : ''
 
         Image {
             id: loadingIndicator
